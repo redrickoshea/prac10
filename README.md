@@ -119,6 +119,8 @@ Note the dependency on the `prepare` target, and the use of the Linux-style forw
 
 8) Run the `utest` target from the Ant window which should execute two test classes successfully. Take note of the
     failure counts and error counts.
+    
+**NOTE:** If you are getting an error like `NoSuchMethodError for org.apache.tools.ant.taskdefs.optional.junitlauncher.TestRequest`, Daniel Johnston suggests the following: "I managed to fix it by going to Ant properties, Additional Classpath and rather than selecting Add All in Directory and selecting lib, I manually added each jar in lib except for junitlauncher.jar."
 
 9) We are now almost complete, but there are a couple of things to do. Have a look in the `${testBase}` directory and  you will find a couple of xml files containing the results from the `junit` run. Browse them and get a sense of their structure.  Now add in the final line of the `utest` target, which invokes the error facilities of Ant:
 ```
