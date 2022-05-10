@@ -1,7 +1,7 @@
 CAB302 Software Development
 ===========================
 
-# Week 12: The Integrated Build Process
+# Week 10: The Integrated Build Process
 
 The classes for this week are about integrated builds in a modern development environment. We begin slowly, but build up to generating a professional build file for some existing code. We will work with the source code from a past semester's assignment that implements a simple simulation of a warehouse. We also have some associated unit tests and we will be exploring that relationship a little.
 
@@ -18,7 +18,7 @@ We are going to use a slightly different directory structure for this project; s
 The source code for this practical is contained within subdirectories of the `src` folder of the
 repository, as you have come to expect. We now assume that we need to build the project repeatedly, and in a professional environment. We first work to produce a directory structure that matches the package structure, and thence to achieve a build file that handles both the compilation of the model and test files, along with the execution of the unit tests themselves. Maven and Gradle are designed around a common project directory structure (known as the Standard Directory Layout) and expect application and test source files to be in specific locations. Ant is more flexible, but it still helps to separate test and application code.
 
-Upon cloning the repository, the top-level project directory will be called `prac11`. These instructions will assume the name of this directory has not been changed.
+Upon cloning the repository, the top-level project directory will be called `prac10`. These instructions will assume the name of this directory has not been changed.
 
 Now examine the provided source code. In the `src/answer` directory you will see that the first line of each of the
 source files specifies package membership as shown:
@@ -29,17 +29,17 @@ The `utest` directory is similar, but contains the source code for unit tests. N
 
 By now we should have:
 
-* \...\prac11\src\question
+* \...\prac10\src\question
   * Ledger.java
   * Simulation.java
   * SimulationComponents.java
   * SimulationFrame.java
   * Transactions.java
   * WarehouseException.java
-* \...\prac11\src\answer
+* \...\prac10\src\answer
   * WarehouseLedger.java
   * WarehouseTransactions.java
-* \...\prac11\utest\answer
+* \...\prac10\utest\answer
   * LedgerTest.java
   * TransactionsTest.java
 
@@ -49,7 +49,7 @@ The root of the path will vary with your own installations. The key is that the 
 
 ## Build file
 
-Now change to the top directory of `prac11`, which at this point should contain `src` and `utest` directories. Open the file called `build.xml` in this root directory. The file contains some properties, which have been defined for your convenience, but you will need to create build targets.
+Now change to the top directory of `prac10`, which at this point should contain `src` and `utest` directories. Open the file called `build.xml` in this root directory. The file contains some properties, which have been defined for your convenience, but you will need to create build targets.
 
 You should run Ant from the Ant tool window in IntelliJ (if it is not already open, go to View -> Tool Windows -> Ant to show it) after you've completed each significant edit, as this will confirm that the syntax is OK. Ant messages will appear in the 'Messages' window, which by default is on the bottom pane of IntelliJ, but you can also bring it up by going to View -> Tool Windows -> Messages.
 
@@ -146,18 +146,18 @@ Note the dependency on the `prepare` target, and the use of the Linux-style forw
 The output of `build` should look like this:
 
 ```
-Buildfile: /home/ben/IdeaProjects/prac11/build.xml
+Buildfile: /home/ben/IdeaProjects/prac10/build.xml
 
 prepare:
-    [mkdir] Created dir: /home/ben/IdeaProjects/prac11/testFiles
-    [mkdir] Created dir: /home/ben/IdeaProjects/prac11/artifacts
-    [mkdir] Created dir: /home/ben/IdeaProjects/prac11/utestclasses
+    [mkdir] Created dir: /home/ben/IdeaProjects/prac10/testFiles
+    [mkdir] Created dir: /home/ben/IdeaProjects/prac10/artifacts
+    [mkdir] Created dir: /home/ben/IdeaProjects/prac10/utestclasses
 
 compile:
-    [javac] Compiling 8 source files to /home/ben/IdeaProjects/prac11/artifacts
+    [javac] Compiling 8 source files to /home/ben/IdeaProjects/prac10/artifacts
 
 compileTests:
-    [javac] Compiling 2 source files to /home/ben/IdeaProjects/prac11/utestclasses
+    [javac] Compiling 2 source files to /home/ben/IdeaProjects/prac10/utestclasses
 
 utest:
 [junitlauncher] 
@@ -192,7 +192,7 @@ utest:
 [junitlauncher] 
 
 build:
-      [jar] Building jar: /home/ben/IdeaProjects/prac11/WarehouseSimulation.jar
+      [jar] Building jar: /home/ben/IdeaProjects/prac10/WarehouseSimulation.jar
 
 BUILD SUCCESSFUL
 Total time: 1 second
@@ -231,7 +231,7 @@ For the final step, we want to set up a continuous integration (CI) pipeline to 
 
 Note that JUnitLauncher (the Ant task used to run JUnit 5 unit tests) is not a default part of Ant, although it is included in the version of Ant packaged with IntelliJ. In this practical we have provided a .jar of JUnitLauncher in the `lib` directory, which we will modify the .yaml file to point Ant to. However, for your own projects you will need to download this separately. You can download it from Maven in the usual way (from Project Structure -> Libraries): enter `org.apache.ant:ant-junitlauncher:1.10.9` (or a later ver) in the text field, disable transitive dependencies and select the option that stores the .jar in the `lib` directory. Note that this is not necessary for this prac, but may be necessary for your own projects.
 
-1) The first thing you will need to do is get your prac 11 code onto GitHub. Go to GitHub, create an account (if you haven't done so already) and create a new repository - ideally named `prac11`. Make it private and do not initialise the repository with any files.
+1) The first thing you will need to do is get your prac 11 code onto GitHub. Go to GitHub, create an account (if you haven't done so already) and create a new repository - ideally named `prac10`. Make it private and do not initialise the repository with any files.
 
 2) Get your newly created repository's SSH URL, go to Git -> Manage Remotes in IntelliJ and replace the `origin` URL with the new SSH URL.
 
@@ -241,7 +241,7 @@ Note that JUnitLauncher (the Ant task used to run JUnit 5 unit tests) is not a d
 
 5) For convenience, choose one of the provided workflows. You may need to scroll down and click on 'More continuous integration workflows...' to find it, but you want the one titled 'Java with Ant' as it is very close to what we need.
 
-6) The default .yaml file that this workflow provides uses JDK 11 and runs Ant on your `build.xml` file. This is almost perfect. Change it to use JDK 15 instead (edit the `'java-version'` parameter).
+6) The default .yaml file that this workflow provides uses JDK 11 and runs Ant on your `build.xml` file. This is almost perfect. Change it to use JDK 17 instead (edit the `'java-version'` parameter).
 
 7) We need to give Ant the path to our `lib` directory so it will find the JUnitLauncher task (and anything else it needs). Add `-lib lib ` to the invocation of Ant in the .yaml file.
 
@@ -253,7 +253,7 @@ Note that JUnitLauncher (the Ant task used to run JUnit 5 unit tests) is not a d
 
 2) Follow the instructions to get Jenkins running on your platform. When you come to installing plugins, make sure you get the Ant and FSTrigger plugins.
 
-3) Create a new freestyle project (e.g. named `prac11`). The process of configuring it should be fairly straightforward as the client is graphical. Set the FSTrigger to run whenever a .java file in your project changes (`**/*.java`).
+3) Create a new freestyle project (e.g. named `prac10`). The process of configuring it should be fairly straightforward as the client is graphical. Set the FSTrigger to run whenever a .java file in your project changes (`**/*.java`).
 
 4) You may need to install command-line Ant - follow the instructions found in Ant's online documentation to get Ant installed and environment variables configured: [https://ant.apache.org/manual/install.html#installing](https://ant.apache.org/manual/install.html#installing).
 
@@ -261,8 +261,8 @@ Note that JUnitLauncher (the Ant task used to run JUnit 5 unit tests) is not a d
 
 6) Configure your project in Jenkins to launch Ant as one of the build steps. You should not need to configure this.
 
-7) Now you need to find Jenkins' workspace directory for this project. The exact location depends on your setup, but you should be able to find the Jenkins directory under Manage Jenkins -> System Information. Then just look for the `prac11` directory under the `workspace` directory inside it.
+7) Now you need to find Jenkins' workspace directory for this project. The exact location depends on your setup, but you should be able to find the Jenkins directory under Manage Jenkins -> System Information. Then just look for the `prac10` directory under the `workspace` directory inside it.
 
-8) Now that you have found the workspace directory, copy and paste the entire contents of your IntelliJ project directory into it (so that the `build.xml` file falls into the Jenkins `workspace/prac11` directory.
+8) Now that you have found the workspace directory, copy and paste the entire contents of your IntelliJ project directory into it (so that the `build.xml` file falls into the Jenkins `workspace/prac10` directory.
 
 9) Jenkins should now spot the changed directory structure and launch a build. Return to the dashboard and wait for it to happen. You may need to debug things if nothing happens after a minute.
