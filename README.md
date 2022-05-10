@@ -231,7 +231,7 @@ For the final step, we want to set up a continuous integration (CI) pipeline to 
 
 Note that JUnitLauncher (the Ant task used to run JUnit 5 unit tests) is not a default part of Ant, although it is included in the version of Ant packaged with IntelliJ. In this practical we have provided a .jar of JUnitLauncher in the `lib` directory, which we will modify the .yaml file to point Ant to. However, for your own projects you will need to download this separately. You can download it from Maven in the usual way (from Project Structure -> Libraries): enter `org.apache.ant:ant-junitlauncher:1.10.9` (or a later ver) in the text field, disable transitive dependencies and select the option that stores the .jar in the `lib` directory. Note that this is not necessary for this prac, but may be necessary for your own projects.
 
-1) The first thing you will need to do is get your prac 11 code onto GitHub. Go to GitHub, create an account (if you haven't done so already) and create a new repository - ideally named `prac10`. Make it private and do not initialise the repository with any files.
+1) The first thing you will need to do is get your prac 10 code onto GitHub. Go to GitHub, create an account (if you haven't done so already) and create a new repository - ideally named `prac10`. Make it private and do not initialise the repository with any files.
 
 2) Get your newly created repository's SSH URL, go to Git -> Manage Remotes in IntelliJ and replace the `origin` URL with the new SSH URL.
 
