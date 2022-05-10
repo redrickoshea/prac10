@@ -235,7 +235,7 @@ Note that JUnitLauncher (the Ant task used to run JUnit 5 unit tests) is not a d
 
 2) Get your newly created repository's SSH URL, go to Git -> Manage Remotes in IntelliJ and replace the `origin` URL with the new SSH URL.
 
-3) Commit your changes to the repository, then push them, handling authentication where necessary (you may need to set up SSH keys to do this). Your prac 11 code should now appear on GitHub in your private repository.
+3) Commit your changes to the repository, then push them, handling authentication where necessary (you may need to set up SSH keys to do this). Your prac 10 code should now appear on GitHub in your private repository.
 
 4) On your repository page on GitHub, you will see a button titled 'Actions' (in between the 'Pull Requests' and 'Projects' buttons). Click that.
 
