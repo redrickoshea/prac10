@@ -137,6 +137,8 @@ Note the dependency on the `prepare` target, and the use of the Linux-style forw
           <attribute name="Implementation-Vendor" value="QUT"/>
           <attribute name="Implementation-Title" value="CAB302 Exercise"/>
           <attribute name="Implementation-Version" value="1.0.0"/>
+          <!-- The application entry point -->
+          <attribute name="Main-Class" value="question.Simulation"/>
         </manifest>
       </jar>
     </target>
