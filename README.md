@@ -200,6 +200,8 @@ BUILD SUCCESSFUL
 Total time: 1 second
 ```
 
+12) Go back up to the `<project>` tag at the top of the build file and add `default="build"`. This will make our newly created build target the default target, which will come in handy when we use this in a CI pipeline later. You will know if you have succeeded because the build target's name should now be displayed in bold in the Ant window.
+
 13) Next you should produce some Javadoc. We do this by specifying which packages we would like to create Javadoc for, and then list some options. Javadoc may be produced as follows:
 ```
     <target name="doc" >
