@@ -8,4 +8,22 @@
 	<property name="apiguardianJar" value="lib/apiguardian-api-1.0.0.jar" />
 
 	<property name="junitpath" value="${junitJar}:${junitPlatformJar}:${opentestJar}:${apiguardianJar}" />
+
+	<target name = "prepare" description="create target directories">
+		<mkdir dir="${testBase}" />
+		<mkdir dir="${base}" />
+		<mkdir dir="doc" />
+		<mkdir dir="utestclasses" />
+	</target>
+
+	<target name="compile" depends="prepare"
+			description="Compile source" >
+		<javac srcdir="src" classpath="${base}" destdir="${base}"
+			   includeantruntime="false">
+			<include name="question/*.java" />
+			<include name="answer/*.java" />
+		</javac>
+	</target>
+
+
 </project>
